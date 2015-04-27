@@ -1,0 +1,8 @@
+<% if @line_items.size == 0 %>
+  $('#cart').hide('blind', 1000, function() {
+    $(this).html("<%= escape_javascript render(@cart) %>");
+  });
+<% else %>
+  if ($('#cart tr').is(':hidden')) { $('#cart').show('blind', 1000); } 
+  $('#cart').html("<%= escape_javascript render(@cart) %>");
+<% end %>
