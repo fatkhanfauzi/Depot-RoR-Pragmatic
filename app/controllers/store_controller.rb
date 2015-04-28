@@ -7,4 +7,13 @@ class StoreController < ApplicationController
     @count = session[:counter] += 1 
     @products = Product.order(:title)
   end
+  
+  def checkout
+    if @cart.empty?
+      redirect_to_index("Your cart is empty")
+    else
+      @order = Order.new
+      @disable_checkout_button = true
+    end
+  end
 end
